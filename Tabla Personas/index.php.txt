@@ -1,0 +1,17 @@
+<?php
+    include_once "Persona.php";
+
+    $lista =  [
+        new Persona("Fulano", "1969-11-02", "5546546554),
+        new Persona("Karleishon", "2003-01-13", "5647566574),
+        new Persona("Michelle", "1967-10-02", "5546546758),
+        new Persona("Jair", "1999-01-02", "5540549554),
+        new Persona("Brayan", "2000-05-02", "5578890054),
+        new Persona("Viera", "2004-09-02", "5546569854),
+        new Persona("Valdepe", "1969-11-01", "5546540054),
+        new Persona("Aladin", "1969-09-02", "5566096554),
+        new Persona("Estrella", "1989-07-02", "5546906554),
+        new Persona("Max", "1900-09-09", "5546549054),
+    ];
+echo "Todo bien";
+?>
