@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadena "murciélago"</title>
+</head>
+<body>
+    <h1>Análisis de la palabra "murcielago"</h1>
+
+    <p id="vocales"></p>
+    <p id="consonantes"></p>
+    <p id="idiomaEFE"></p>
+
+    <script>
+        // Palabra original
+        let palabra = "murcielago";
+        let vocales = "aeiou";
+        let cantidadVocales = 0;
+        let palabraEFE = "";
+
+        // Recorremos la palabra
+        let i = 0;
+        while (i < palabra.length) {
+            let letra = palabra[i];
+
+            // Contar cuántas veces aparece la letra en las vocales
+            let j = 0;
+            let esVocal = 0;
+            while (j < vocales.length) {
+                // Si la letra está en las vocales, esVocal aumenta
+                esVocal = esVocal + (letra === vocales[j]) * 1;
+                j = j + 1;
+            }
+
+            // Sumar al contador de vocales
+            cantidadVocales = cantidadVocales + esVocal;
+
+            // Agregar letra al idioma EFE
+            // Si es vocal, se agrega letra + "f" + letra, si no, solo la letra
+            let letraEFE = letra.repeat(1 + esVocal * 2); // "a" → "afa", "m" → "m"
+            if (esVocal === 1) {
+                // usamos repeat: "a".repeat(3) = "aaa"
+                letraEFE = letra + "f" + letra;
+            }
+
+            // Alternativa sin if: usamos operación matemática
+            let letraFinal = letra.repeat(1 - esVocal) + (letra + "f" + letra).repeat(esVocal);
+            palabraEFE = palabraEFE + letraFinal;
+
+            i = i + 1;
+        }
+
+        let cantidadConsonantes = palabra.length - cantidadVocales;
+
+        // Mostrar resultados
+        document.getElementById("vocales").innerText = "Número de vocales: " + cantidadVocales;
+        document.getElementById("consonantes").innerText = "Número de consonantes: " + cantidadConsonantes;
+        document.getElementById("idiomaEFE").innerText = "Idioma EFE: " + palabraEFE;
+    </script>
+</body>
+</html>

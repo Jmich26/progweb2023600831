@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Serie Numérica</title>
+</head>
+<body>
+    <h1>Serie del 2 al 400 (de 2 en 2)</h1>
+
+    <p id="serie"></p>
+    <p id="promedio"></p>
+    <p id="mediana"></p>
+    <p id="moda"></p>
+
+    <script>
+        // Crear la serie del 2 al 400 con while
+        let numeros = [];
+        let i = 2;
+
+        while (i <= 400) {
+            numeros.push(i);
+            i = i + 2;
+        }
+
+        // Mostrar la serie
+        let texto = "Serie: ";
+        let j = 0;
+        while (j < numeros.length) {
+            texto = texto + numeros[j] + ", ";
+            j = j + 1;
+        }
+        document.getElementById("serie").innerText = texto;
+
+        // Calcular promedio
+        let suma = 0;
+        let k = 0;
+        while (k < numeros.length) {
+            suma = suma + numeros[k];
+            k = k + 1;
+        }
+        let promedio = suma / numeros.length;
+        document.getElementById("promedio").innerText = "Promedio: " + promedio;
+
+        // Calcular mediana (la serie ya está ordenada)
+        let mitad = Math.floor(numeros.length / 2);
+        let valor1 = numeros[mitad - 1];
+        let valor2 = numeros[mitad];
+        let mediana = (valor1 + valor2) / 2;
+        document.getElementById("mediana").innerText = "Mediana: " + mediana;
+
+        // Calcular moda (todos los números aparecen una vez)
+        let moda = "No hay moda, todos los números aparecen una sola vez";
+        document.getElementById("moda").innerText = "Moda: " + moda;
+    </script>
+</body>
+</html>
