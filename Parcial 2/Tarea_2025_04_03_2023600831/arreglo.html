@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio con let</title>
+</head>
+<body>
+
+<h2>Resultados</h2>
+<p id="resultado1"></p>
+<p id="resultado2"></p>
+<p id="resultado3"></p>
+
+<script>
+// Arreglo con números, textos y booleanos
+let datos = [5, "Hola", true, 3, " Mundo", false, 7, true];
+
+// Variables para guardar resultados
+let suma = 0;
+let texto = "";
+let resultadoAND = true;
+
+// Recorremos el arreglo
+for (let i = 0; i < datos.length; i++) {
+    let elemento = datos[i];        // Obtenemos el valor actual
+    let tipo = typeof elemento;     // Vemos qué tipo de dato es
+
+    // Usamos switch para decidir qué hacer con el dato
+    switch (tipo) {
+        case "number":
+            suma += elemento;       // Si es número, lo sumamos
+            break;
+        case "string":
+            texto += elemento;      // Si es texto, lo juntamos
+            break;
+        case "boolean":
+            resultadoAND = resultadoAND && elemento;  // Si es booleano, hacemos AND
+            break;
+    }
+}
+
+// Mostramos los resultados
+document.getElementById("resultado1").textContent = "Suma de los números: " + suma;
+document.getElementById("resultado2").textContent = "Texto concatenado: " + texto;
+document.getElementById("resultado3").textContent = "Resultado del AND: " + resultadoAND;
+</script>
+
+</body>
+</html>

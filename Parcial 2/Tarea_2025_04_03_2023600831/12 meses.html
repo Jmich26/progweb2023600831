@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Ordinal de Jhoana</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    h1 {
+      color: darkblue;
+    }
+
+    #caja div {
+      margin: 8px 0;
+      padding: 6px;
+      background-color: #f0f0f0;
+      border-radius: 4px;
+    }
+
+    .especial {
+      background-color: #e0c9ff;
+      font-weight: bold;
+      color: pink;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Meses del Año</h1>
+  <div id="caja"></div>
+
+  <script>
+    let lista = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio",
+                 "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"];
+
+    let especial = "Julio";
+    let mensaje = "Jhoana es la vigésima sexta del mes";
+
+    let caja = document.getElementById("caja");
+
+    for (let i = 0; i < lista.length; i++) {
+      let nombre = lista[i];
+      let nuevoDiv = document.createElement("div");
+      let textoFinal;
+
+      if (nombre === especial) {
+        textoFinal = nombre + " - " + mensaje;
+        nuevoDiv.classList.add("especial");
+      } else {
+        textoFinal = nombre;
+      }
+
+      let texto = document.createTextNode(textoFinal);
+      nuevoDiv.appendChild(texto);
+      caja.appendChild(nuevoDiv);
+    }
+  </script>
+
+</body>
+</html>
