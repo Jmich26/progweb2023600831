@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculadora Básica</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #d0ff00;
+    }
+
+    #calculadora {
+      background: rgb(81, 255, 0);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #display {
+      width: 220px;
+      height: 40px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 20px;
+      padding: 5px;
+    }
+
+    #botones {
+      display: grid;
+      grid-template-columns: repeat(4, 50px);
+      gap: 10px;
+    }
+
+    #igual {
+      margin-top: 20px;
+      width: 60px;
+      height: 60px;
+      font-size: 24px;
+    }
+
+    button {
+      height: 50px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="calculadora">
+    <input type="text" id="display" readonly>
+    <div id="botones">
+      <button onclick="btn_click('1')">1</button>
+      <button onclick="btn_click('2')">2</button>
+      <button onclick="btn_click('3')">3</button>
+      <button onclick="btn_click('-')">-</button>
+
+      <button onclick="btn_click('4')">4</button>
+      <button onclick="btn_click('5')">5</button>
+      <button onclick="btn_click('6')">6</button>
+      <button onclick="btn_click('+')">+</button>
+
+      <button onclick="btn_click('7')">7</button>
+      <button onclick="btn_click('8')">8</button>
+      <button onclick="btn_click('9')">9</button>
+      <button onclick="btn_click('C')">C</button>
+
+      <button onclick="btn_click('0')">0</button>
+    </div>
+    <button id="igual" onclick="btn_click('=')">=</button>
+  </div>
+
+  <script>
+    let resultadoMostrado = false;
+
+    function btn_click(val) {
+      let display = document.getElementById("display");
+
+      if (val === "C") {
+        display.value = "";
+        resultadoMostrado = false;
+        return;
+      }
+
+      if (resultadoMostrado && val !== "=") {
+        display.value = "";
+        resultadoMostrado = false;
+      }
+
+      if (val === "=") {
+        try {
+          display.value = eval(display.value);
+          resultadoMostrado = true;
+        } catch (e) {
+          display.value = "Error";
+          resultadoMostrado = true;
+        }
+      } else {
+        display.value += val;
+      }
+    }
+  </script>
+</body>
+</html>

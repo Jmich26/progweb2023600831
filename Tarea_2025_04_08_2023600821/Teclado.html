@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Teclado</title>
+  <style>
+    body {
+      font-family: Comics cs, sans-serif;
+      text-align: center;
+      margin-top: 30px;
+      transition: background-color 0.3s;
+    }
+
+    #contenedor {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-end;
+      gap: 60px;
+    }
+
+    /* Contenedor izquierdo con W encima de A S D */
+    #grupoWASD {
+      display: grid;
+      grid-template-columns: repeat(3, 60px);
+      grid-template-rows: 60px 60px;
+      gap: 10px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Colocamos W al centro arriba */
+    #teclaW {
+      grid-column: 2;
+      grid-row: 1;
+    }
+
+    /* A, S, D en la segunda fila */
+    #teclaA {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    #teclaS {
+      grid-column: 2;
+      grid-row: 2;
+    }
+
+    #teclaD {
+      grid-column: 3;
+      grid-row: 2;
+    }
+
+    /* Contenedor derecho para Z y X en fila horizontal */
+    #grupoZX {
+      display: flex;
+      gap: 10px;
+      align-items: flex-end;
+    }
+
+    /* Estilo para todos los divs */
+    #teclaW, #teclaA, #teclaS, #teclaD, #teclaZ, #teclaX {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+      font-weight: bold;
+      border: 2px solid black;
+      border-radius: 8px;
+      color: white;
+    }
+
+    #teclaW { background-color: rgb(255, 0, 0); }
+    #teclaA { background-color: rgb(255, 94, 0); }
+    #teclaS { background-color: rgb(255, 213, 0); }
+    #teclaD { background-color: rgb(0, 255, 234); color: black; }
+    #teclaZ { background-color: rgb(0, 174, 254); color: black; }
+    #teclaX { background-color: rgb(174, 0, 255); }
+
+    .borde-activo {
+      outline: 4px solid black;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Teclado Colorido</h2>
+
+  <div id="contenedor">
+    <div id="grupoWASD">
+      <div id="teclaW">W</div>
+      <div id="teclaA">A</div>
+      <div id="teclaS">S</div>
+      <div id="teclaD">D</div>
+    </div>
+    <div id="grupoZX">
+      <div id="teclaZ">Z</div>
+      <div id="teclaX">X</div>
+    </div>
+  </div>
+
+  <script>
+    let teclas = ['W', 'A', 'S', 'D', 'Z', 'X'];
+    let teclaActiva = null;
+
+    document.addEventListener("keydown", function(evento) {
+      let letra = evento.key.toUpperCase();
+
+      if (teclas.includes(letra)) {
+        let idDiv = "tecla" + letra;
+        let divTecla = document.getElementById(idDiv);
+        let color = window.getComputedStyle(divTecla).backgroundColor;
+        document.body.style.backgroundColor = color;
+
+        if (teclaActiva !== null) {
+          teclaActiva.classList.remove("borde-activo");
+        }
+
+        divTecla.classList.add("borde-activo");
+        teclaActiva = divTecla;
+      }
+    });
+
+    document.addEventListener("keyup", function(evento) {
+      let letra = evento.key.toUpperCase();
+
+      if (teclas.includes(letra) && teclaActiva !== null) {
+        teclaActiva.classList.remove("borde-activo");
+        teclaActiva = null;
+      }
+    });
+  </script>
+
+</body>
+</html>
